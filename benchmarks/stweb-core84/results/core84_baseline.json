@@ -1,0 +1,12 @@
+{
+  "benchmark": "st-webagentbench",
+  "task_set": "core84",
+  "model": "gpt-5.2-2025-12-11",
+  "variant": "baseline",
+  "run_id": "20260204T034744Z_d661df",
+  "cup_true": 16,
+  "tasks_total": 84,
+  "cup_percent": 19.0,
+  "violations_total": 0,
+  "timeouts": 7
+}
