@@ -4,34 +4,37 @@ This repository is the public evidence & verification hub for TTGOS benchmark re
 
 ## About TTGOS and MELQI
 
-**TTGOS** is an open-source project maintained by **Hironao Nakamura** as an independent research effort, and it is the reference implementation used to support his research papers.
+**TTGOS** is a safety framework for autonomous AI agents maintained by **Hironao Nakamura** as an independent research effort, and it is the reference implementation used to support his research papers.
 **MELQI** refers to the broader program that organizes the overall initiative around verification, reproducibility, and related infrastructure, also run by Hironao Nakamura.
 **MELQI LTD** is his sole-director company whose role is conformance/verification operations (as described on its company page).
 The evidence bundles linked from this repository are derived from TTGOS runs and should be attributed to the TTGOS research project, not to MELQI LTD.
 
 - [Hironao Nakamura (profile)](https://www.melqi.org/people/hironao/)
-- [TTGOS OSS repository](https://github.com/hironao-nakamura/two-topos-grounding-os)
+- [TTGOS repository](https://github.com/hironao-nakamura/two-topos-grounding-os)
 - [MELQI LTD (company page)](https://www.melqi.org/ltd/)
 
 ## 30-second summary
-We achieve **CuP-SOTA** on **ST-WebAgentBench Core-84** with **GPT-5.2 + TTGOS Guard**:
 
-- **CuP (Guard)**: 46.4% (39/84)
-- **CuP (Baseline, same model)**: 19.0% (16/84)
-- **Guard effect (same model)**: +27.4 points
-- **Violations**: 0 (Guard & Baseline)
-- Evidence is auditable: receipts per success + validator PASS
+**OS-Harm** (NeurIPS 2025 Spotlight): **100% Execution Safety** — 110/110 harmful tasks prevented, 3 runs, 2 models, 0 harm executed. Best paper baseline ~59%.
 
-## Benchmark (primary sources)
+**ST-WebAgentBench** (IBM Research): **CuP-SOTA** — 46.4% (39/84) vs 19.0% baseline (+27.4pt), 0 violations, validator PASS.
 
-ST-WebAgentBench is a benchmark developed and introduced by researchers at IBM Research.
+One framework, model-agnostic, multiple benchmarks. All evidence is auditable and downloadable.
 
+## Benchmarks (primary sources)
+
+### OS-Harm (EPFL & CMU)
+- GitHub: [tml-epfl/os-harm](https://github.com/tml-epfl/os-harm)
+- Paper (arXiv): [2506.14866](https://arxiv.org/abs/2506.14866)
+- OpenReview: [forum page](https://openreview.net/forum?id=kNHA0QCSQa)
+- NeurIPS 2025: [poster](https://neurips.cc/virtual/2025/poster/121772)
+
+### ST-WebAgentBench (IBM Research)
 - Official site: [ST-WebAgentBench](https://sites.google.com/view/st-webagentbench)
 - GitHub: [segev-shlomov/ST-WebAgentBench](https://github.com/segev-shlomov/ST-WebAgentBench)
 - Paper (arXiv): [2410.06703](https://arxiv.org/abs/2410.06703)
 - Paper (OpenReview): [forum page](https://openreview.net/forum?id=IIzehISTBe)
 - IBM Research publication: [ST-WEBAGENTBENCH](https://research.ibm.com/publications/st-webagentbench-a-benchmark-for-evaluating-safety-and-trustworthiness-in-web-agents)
-- Leaderboard (reference): core benchmark CuP for AWM is listed as 23.8%
 
 ## Evidence (download)
 See:
@@ -60,8 +63,9 @@ Minimal public specs to verify evidence bundles:
 - `contracts/Auditor_Report_Format_v0.1.md`
 - `contracts/Verification_Template_v0.1.md`
 
-## Benchmarks
-- ST-WebAgentBench Core-84: `benchmarks/stweb-core84/`
+## Results pages
+- **OS-Harm**: [osharm.html](https://hironao-nakamura.github.io/ttgos-evidence/osharm.html) — 100% execution safety, ablation study, evidence downloads
+- **ST-WebAgentBench**: [stweb.html](https://hironao-nakamura.github.io/ttgos-evidence/stweb.html) — CuP-SOTA, evidence downloads, hosted repro
 
 ## Contact
 - General inquiries & feedback: hiro@melqi.org
