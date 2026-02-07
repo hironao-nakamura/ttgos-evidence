@@ -106,6 +106,16 @@ main {
 }
 
 /* --------------------------------------------------------------------------
+   Bench Note (source attribution)
+   -------------------------------------------------------------------------- */
+.bench-note {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-xs);
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
    Bench Links (GitHub / Paper / Leaderboard)
    -------------------------------------------------------------------------- */
 .bench-links {
@@ -506,6 +516,30 @@ main {
   background-color: #E0E0E0;
 }
 
+/* --------------------------------------------------------------------------
+   Evidence Grid (Raw Data Download Cards)
+   -------------------------------------------------------------------------- */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.evidence-button.secondary {
+  border-color: var(--color-border);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.evidence-button.secondary .evidence-name {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.evidence-button.secondary .evidence-meta {
+  font-size: 12px;
+}
+
 .evidence-alt {
   font-size: var(--font-size-small);
   color: var(--color-text-muted);
@@ -732,6 +766,401 @@ a:focus-visible,
   .hero h1 {
     font-size: 1.875rem;
   }
+}
+
+/* ==========================================================================
+   Hub Page — Benchmark Cards
+   ========================================================================== */
+
+.hub-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.hub-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hub-card:hover {
+  border-color: var(--color-text-muted);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.hub-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.hub-card-badge {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-pass);
+  background-color: #E8F5E9;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.hub-card-bench {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.hub-card-metric {
+  text-align: center;
+  padding: var(--spacing-sm) 0;
+}
+
+.hub-card-value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.hub-card-label {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.hub-card-detail {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.hub-card-detail p {
+  margin-bottom: 2px;
+}
+
+.hub-card-comparison {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.hub-card-cta {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-top: auto;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.hub-card:hover .hub-card-cta {
+  text-decoration: underline;
+}
+
+@media (max-width: 599px) {
+  .hub-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .hub-card-value {
+    font-size: 2rem;
+  }
+}
+
+/* ==========================================================================
+   Flow Steps (How it works diagram)
+   ========================================================================== */
+
+.flow-steps {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-md) 0;
+}
+
+.flow-step {
+  flex: 1;
+  text-align: center;
+  padding: var(--spacing-sm);
+}
+
+.flow-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  background-color: var(--color-text-primary);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50%;
+  margin-bottom: var(--spacing-xs);
+}
+
+.flow-title {
+  display: block;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+  font-size: var(--font-size-small);
+}
+
+.flow-desc {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  padding-top: var(--spacing-md);
+}
+
+@media (max-width: 599px) {
+  .flow-steps {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .flow-arrow {
+    justify-content: center;
+    padding-top: 0;
+    transform: rotate(90deg);
+  }
+}
+
+/* ==========================================================================
+   Info Grid (osharm: What is OS-Harm)
+   ========================================================================== */
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.info-item {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.info-label {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.info-value {
+  display: block;
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 599px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Results Row Extensions
+   ========================================================================== */
+
+.results-row.highlight {
+  background-color: #F0FFF0;
+  border-left: 3px solid var(--color-pass);
+}
+
+.results-detail {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Category Grid (per-category breakdown)
+   ========================================================================== */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.category-card {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: var(--spacing-md);
+}
+
+.category-card h4 {
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.category-description {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.4;
+}
+
+.category-metric {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+  margin-bottom: 4px;
+}
+
+.category-metric.muted {
+  opacity: 0.6;
+}
+
+.category-ours {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-pass);
+}
+
+.category-baseline {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.category-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.category-detail {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-xs);
+}
+
+@media (max-width: 599px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Key Insight Box
+   ========================================================================== */
+
+.key-insight {
+  background-color: #FAFAFA;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.key-insight p {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.key-insight strong {
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Insight Grid (Why This Matters)
+   ========================================================================== */
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+}
+
+.insight-item {
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.insight-item h3 {
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.insight-item p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.insight-item a {
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 3px;
+}
+
+.insight-item a:hover {
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 599px) {
+  .insight-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Upcoming List
+   ========================================================================== */
+
+.upcoming-list {
+  list-style: none;
+  margin-bottom: var(--spacing-md);
+}
+
+.upcoming-list li {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+.upcoming-list li strong {
+  color: var(--color-text-primary);
+}
+
+.upcoming-list li em {
+  color: var(--color-text-muted);
 }
 
 /* ==========================================================================
