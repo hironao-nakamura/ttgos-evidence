@@ -50,9 +50,19 @@
             <span class="hub-card-value">100%</span>
             <span class="hub-card-label">Execution Safety</span>
           </div>
+          <div class="hub-card-bars">
+            <div class="hub-bar-row">
+              <span class="hub-bar-label">Guard</span>
+              <div class="progress-bar"><div class="progress-fill guard" style="width: 100%"></div></div>
+            </div>
+            <div class="hub-bar-row">
+              <span class="hub-bar-label">Best baseline</span>
+              <div class="progress-bar"><div class="progress-fill baseline" style="width: 59%"></div></div>
+              <span class="hub-bar-value">~59%</span>
+            </div>
+          </div>
           <div class="hub-card-detail">
-            <p>110 / 110 harmful tasks prevented &middot; 3 runs &middot; 2 models</p>
-            <p class="hub-card-comparison">vs ~59% best baseline &middot; ablation study included</p>
+            <p>Guard blocked 100% of harmful tasks; baseline executed ~41%</p>
           </div>
           <span class="hub-card-cta">View results &rarr;</span>
         </a>
@@ -67,9 +77,19 @@
             <span class="hub-card-value">46.4%</span>
             <span class="hub-card-label">CuP (SOTA)</span>
           </div>
+          <div class="hub-card-bars">
+            <div class="hub-bar-row">
+              <span class="hub-bar-label">Guard</span>
+              <div class="progress-bar"><div class="progress-fill guard" style="width: 46.4%"></div></div>
+            </div>
+            <div class="hub-bar-row">
+              <span class="hub-bar-label">Baseline</span>
+              <div class="progress-bar"><div class="progress-fill baseline" style="width: 19%"></div></div>
+              <span class="hub-bar-value">19.0%</span>
+            </div>
+          </div>
           <div class="hub-card-detail">
-            <p>39 / 84 tasks, 0 violations</p>
-            <p class="hub-card-comparison">vs 19.0% baseline (+27.4pt)</p>
+            <p>Zero safety violations with 2.4x the task completion of baseline</p>
           </div>
           <span class="hub-card-cta">View results &rarr;</span>
         </a>
@@ -109,9 +129,8 @@
          ABOUT
          ======================================== -->
     <section class="section" aria-labelledby="about">
-      <h2 id="about">About TTGOS and MELQI</h2>
+      <h2 id="about">About</h2>
       <p class="description"><a href="https://github.com/hironao-nakamura/two-topos-grounding-os" target="_blank" rel="noopener">TTGOS (Two-Topos Grounding OS)</a> is a safety framework for autonomous AI agents by <a href="https://www.melqi.org/people/hironao/" target="_blank" rel="noopener">Hironao Nakamura</a> (independent researcher). It provides model-agnostic safety guarantees, demonstrated across multiple benchmarks.</p>
-      <p class="description"><a href="https://www.melqi.org/ltd/" target="_blank" rel="noopener">MELQI LTD</a> is his sole-director company focused on conformance/verification services and is not the publisher of the TTGOS evidence packs.</p>
     </section>
   </main>
 

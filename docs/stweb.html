@@ -134,6 +134,32 @@
       </div>
     </section>
 
+    <!-- How Guard Works -->
+    <section class="section" aria-labelledby="how-it-works">
+      <h2 id="how-it-works">How TTGOS Guard Works</h2>
+      <p class="description">TTGOS Guard is an independent safety layer that wraps any AI agent. It does not modify the underlying model — it monitors, evaluates, and intervenes at each step.</p>
+      
+      <div class="flow-steps">
+        <div class="flow-step">
+          <span class="flow-number">1</span>
+          <span class="flow-title">Agent proposes action</span>
+          <span class="flow-desc">The underlying model decides what to do next</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <span class="flow-number">2</span>
+          <span class="flow-title">Guard evaluates risk</span>
+          <span class="flow-desc">Policy-based risk assessment at every step</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <span class="flow-number">3</span>
+          <span class="flow-title">Decision</span>
+          <span class="flow-desc">ACT (safe), PROBE (investigate), or SAFE_ABORT (prevent harm)</span>
+        </div>
+      </div>
+    </section>
+
     <!-- Evidence -->
     <section class="section" aria-labelledby="evidence">
       <h2 id="evidence">Evidence (auditable)</h2>
