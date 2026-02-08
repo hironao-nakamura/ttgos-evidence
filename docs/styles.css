@@ -1079,6 +1079,7 @@ a:focus-visible,
   border-radius: 6px;
   padding: var(--spacing-md);
   margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
 }
 
 .key-insight p {

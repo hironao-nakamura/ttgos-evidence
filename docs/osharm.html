@@ -55,12 +55,12 @@
           <span class="metric-detail">110 / 110 harmful tasks prevented</span>
         </div>
         <div class="metric-card">
-          <span class="metric-label">Best Paper Baseline</span>
+          <span class="metric-label">Best Paper Baseline (Claude 3.7 Sonnet)</span>
           <span class="metric-value">~59%</span>
           <div class="progress-bar">
             <div class="progress-fill baseline" style="width: 59%"></div>
           </div>
-          <span class="metric-detail">Claude 3.7 Sonnet (no guard)</span>
+          <span class="metric-detail">~41% of harmful tasks were executed</span>
         </div>
         <div class="metric-card highlight">
           <span class="metric-label">Improvement</span>
@@ -139,6 +139,7 @@
         OS-Harm's "Safety Rate" measures how often the agent avoids executing harmful actions.
         Every frontier model tested in the paper fails on a significant portion of tasks.
         <strong>TTGOS Guard achieves 100% — the only system to prevent all harm.</strong>
+        Baselines below are sorted from safest to least safe.
       </p>
       
       <div class="results-table">
@@ -156,11 +157,18 @@
           <span class="results-detail">110 / 110 (Run 2)</span>
         </div>
         
-        <!-- Paper baselines (sorted by safety rate, descending) -->
+        <!-- Our ablation (same model, no guard) -->
+        <div class="results-row">
+          <span class="results-label">GPT-5.2 <em>without</em> Guard</span>
+          <span class="results-value">80.0%</span>
+          <span class="results-detail">Run 3 ablation &middot; 30/150 attacks succeeded</span>
+        </div>
+        
+        <!-- Paper baselines (sorted by safety rate, descending = safest first) -->
         <div class="results-row muted">
           <span class="results-label">Claude 3.7 Sonnet</span>
           <span class="results-value">~59%</span>
-          <span class="results-detail">Paper Table 3</span>
+          <span class="results-detail">Best paper baseline &middot; Table 3</span>
         </div>
         <div class="results-row muted">
           <span class="results-label">Gemini 2.5 Pro</span>
@@ -175,8 +183,12 @@
         <div class="results-row muted">
           <span class="results-label">o4-mini</span>
           <span class="results-value">~33%</span>
-          <span class="results-detail">Paper Table 3</span>
+          <span class="results-detail">Most capable, least safe &middot; Paper Table 3</span>
         </div>
+      </div>
+      
+      <div class="key-insight">
+        <p><strong>Capability&ndash;safety trade-off:</strong> Claude 3.7 Sonnet (~59%) is not a weak model — it is the <em>safest</em> unguarded result in the OS-Harm paper. More capable models actually perform <em>worse</em>: o4-mini, OpenAI's strongest reasoning model, achieves only ~33% safety. The OS-Harm authors document this inverse relationship (Paper &sect;4): models that are better at following instructions also more readily follow harmful ones. TTGOS Guard is the first approach to break this trade-off — achieving 100% safety regardless of the underlying model.</p>
       </div>
       
       <h3>Per-Category Breakdown</h3>
@@ -267,8 +279,8 @@
       
       <div class="insight-grid">
         <div class="insight-item">
-          <h3>Models alone are not safe enough</h3>
-          <p>Even the best frontier model (Claude 3.7 Sonnet) fails on ~41% of harmful tasks. Relying on model-level safety alone is insufficient for real-world deployment.</p>
+          <h3>No model is safe enough — and stronger models are worse</h3>
+          <p>Claude 3.7 Sonnet (~59% safety) is the <em>best</em> unguarded result — not a weak baseline. More capable models score lower: GPT-4o ~45%, o4-mini ~33%. This capability&ndash;safety trade-off means that improving model ability alone will not solve the safety problem. An external safety layer is required.</p>
         </div>
         <div class="insight-item">
           <h3>An independent guard layer is necessary</h3>
