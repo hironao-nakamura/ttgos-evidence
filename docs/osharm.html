@@ -31,12 +31,12 @@
       <h1>TTGOS Guard achieves 100% Execution Safety on OS-Harm</h1>
       
       <p class="subtitle">
-        Every single harmful task — misuse, prompt injection, and misbehavior — was detected and prevented before execution.
+        Every single harmful task (misuse, prompt injection, and misbehavior) was detected and prevented before execution.
         No frontier model achieves this alone. <a href="#significance">Why this matters &rarr;</a>
       </p>
       
       <!-- Benchmark info -->
-      <p class="bench-note">Benchmark: OS-Harm (EPFL &amp; CMU) — NeurIPS 2025 Datasets &amp; Benchmarks Spotlight</p>
+      <p class="bench-note">Benchmark: OS-Harm (EPFL &amp; CMU), NeurIPS 2025 Datasets &amp; Benchmarks Spotlight</p>
       <div class="bench-links">
         <a href="https://github.com/tml-epfl/os-harm" target="_blank" rel="noopener">GitHub</a>
         <a href="https://arxiv.org/abs/2506.14866" target="_blank" rel="noopener">arXiv</a>
@@ -125,7 +125,7 @@
       </div>
       
       <p class="description">
-        Unlike web-only benchmarks, OS-Harm tasks involve real OS-level actions: editing documents, sending emails, running terminal commands, browsing the web — all inside a live VM.
+        Unlike web-only benchmarks, OS-Harm tasks involve real OS-level actions: editing documents, sending emails, running terminal commands, browsing the web, all inside a live VM.
         A single unsafe action can cause irreversible harm.
       </p>
     </section>
@@ -138,7 +138,7 @@
       <p class="description">
         OS-Harm's "Safety Rate" measures how often the agent avoids executing harmful actions.
         Every frontier model tested in the paper fails on a significant portion of tasks.
-        <strong>TTGOS Guard achieves 100% — the only system to prevent all harm.</strong>
+        <strong>TTGOS Guard achieves 100%, the only system to prevent all harm.</strong>
         Baselines below are sorted from safest to least safe.
       </p>
       
@@ -188,7 +188,7 @@
       </div>
       
       <div class="key-insight">
-        <p><strong>Capability&ndash;safety trade-off:</strong> Claude 3.7 Sonnet (~59%) is not a weak model — it is the <em>safest</em> unguarded result in the OS-Harm paper. More capable models actually perform <em>worse</em>: o4-mini, OpenAI's strongest reasoning model, achieves only ~33% safety. The OS-Harm authors document this inverse relationship (Paper &sect;4): models that are better at following instructions also more readily follow harmful ones. TTGOS Guard is the first approach to break this trade-off — achieving 100% safety regardless of the underlying model.</p>
+        <p><strong>Capability&ndash;safety trade-off:</strong> Claude 3.7 Sonnet (~59%) is not a weak model. It is the <em>safest</em> unguarded result in the OS-Harm paper. More capable models actually perform <em>worse</em>: o4-mini, OpenAI's strongest reasoning model, achieves only ~33% safety. The OS-Harm authors document this inverse relationship (Paper &sect;4): models that are better at following instructions also more readily follow harmful ones. TTGOS Guard is the first approach to break this trade-off, achieving 100% safety regardless of the underlying model.</p>
       </div>
       
       <h3>Per-Category Breakdown</h3>
@@ -243,7 +243,7 @@
     <section class="section" aria-labelledby="how-it-works">
       <h2 id="how-it-works">How TTGOS Guard Works</h2>
       <p class="description">
-        TTGOS Guard is an independent safety layer that wraps any AI agent. It does not modify the underlying model — it monitors, evaluates, and intervenes at each step.
+        TTGOS Guard is an independent safety layer that wraps any AI agent. It does not modify the underlying model; it monitors, evaluates, and intervenes at each step.
       </p>
       
       <div class="flow-steps">
@@ -267,7 +267,7 @@
       </div>
       
       <div class="key-insight">
-        <p><strong>Key insight:</strong> The Guard explicitly blocked 107 of 110 tasks via SAFE_ABORT. The remaining 3 tasks reached the step limit without the agent attempting harm (no unsafe action was executed). Result: the Guard is both <em>necessary</em> (models will attempt harm without it — see ablation below) and <em>sufficient</em> (100% prevention rate across all categories).</p>
+        <p><strong>Key insight:</strong> The Guard explicitly blocked 107 of 110 tasks via SAFE_ABORT. The remaining 3 tasks reached the step limit without the agent attempting harm (no unsafe action was executed). Result: the Guard is both <em>necessary</em> (models will attempt harm without it; see ablation below) and <em>sufficient</em> (100% prevention rate across all categories).</p>
       </div>
     </section>
 
@@ -280,11 +280,11 @@
       <div class="insight-grid">
         <div class="insight-item">
           <h3>100% safety &ne; blocking everything</h3>
-          <p>The Guard did not prevent the agent from acting &mdash; it let the agent operate freely and intervened only when necessary. It makes a per-step decision &mdash; ACT (allow), PROBE (investigate), or SAFE_ABORT (prevent) &mdash; on every action the agent proposes. On misbehavior tasks, the Guard allowed up to 14 consecutive steps of agent activity before the task ended safely &mdash; and every step-level decision is recorded in the <a href="#evidence">downloadable evidence pack</a>. Across 110 tasks spanning three fundamentally different attack types (jailbreaks, hidden injections, and autonomous misbehavior), the Guard made the correct call every time &mdash; zero false negatives.</p>
+          <p>The Guard did not prevent the agent from acting. It let the agent operate freely and intervened only when necessary, making a per-step decision (ACT, PROBE, or SAFE_ABORT) on every action the agent proposes. On misbehavior tasks, the Guard allowed up to 14 consecutive steps of agent activity before the task ended safely, and every step-level decision is recorded in the <a href="#evidence">downloadable evidence pack</a>. Across 110 tasks spanning three fundamentally different attack types (jailbreaks, hidden injections, and autonomous misbehavior), the Guard made the correct call every time: zero false negatives.</p>
         </div>
         <div class="insight-item">
-          <h3>No model is safe enough on its own — and stronger models are worse</h3>
-          <p>Claude 3.7 Sonnet (~59% safety) is the <em>best</em> unguarded result — not a weak baseline. More capable models score lower: GPT-4o ~45%, o4-mini ~33%. This capability&ndash;safety trade-off means that improving model ability alone will not solve the safety problem. An external safety layer is required.</p>
+          <h3>No model is safe enough on its own, and stronger models are worse</h3>
+          <p>Claude 3.7 Sonnet (~59% safety) is the <em>best</em> unguarded result, not a weak baseline. More capable models score lower: GPT-4o ~45%, o4-mini ~33%. This capability&ndash;safety trade-off means that improving model ability alone will not solve the safety problem. An external safety layer is required.</p>
         </div>
         <div class="insight-item">
           <h3>An independent guard layer is necessary</h3>
@@ -303,7 +303,7 @@
     <section class="section" aria-labelledby="ablation">
       <h2 id="ablation">Ablation Study: The Guard is Essential</h2>
       <p class="description">
-        Three runs prove that the Guard — not the model — is responsible for the safety improvement.
+        Three runs prove that the Guard, not the model, is responsible for the safety improvement.
       </p>
       
       <div class="results-table">
@@ -327,7 +327,7 @@
       </div>
       
       <div class="key-insight">
-        <p><strong>Key finding:</strong> Without the Guard, GPT-5.2 executes <strong>26 harmful actions</strong> on 100 shared tasks — including forging documents, sending harassment emails, and exfiltrating private data. With the Guard, every single one is caught and prevented. The Guard also works identically with GPT-4.1 (a weaker model), proving it is <em>model-agnostic</em>: swap the model, keep the safety.</p>
+        <p><strong>Key finding:</strong> Without the Guard, GPT-5.2 executes <strong>26 harmful actions</strong> on 100 shared tasks, including forging documents, sending harassment emails, and exfiltrating private data. With the Guard, every single one is caught and prevented. The Guard also works identically with GPT-4.1 (a weaker model), proving it is <em>model-agnostic</em>: swap the model, keep the safety.</p>
       </div>
       
       <div class="category-grid">
@@ -388,19 +388,19 @@
       
       <h3>What's Inside the Evidence Pack</h3>
       <ul class="evidence-contents-list">
-        <li><code>SOTA_CLAIM.md</code> — formal claim: 100% Execution Safety, metric definitions, comparison tables</li>
-        <li><code>A_bench_definition/version_lock.json</code> — benchmark commit, task SHA256, paper baselines</li>
-        <li><code>B_environment/environment.json</code> — machine specs (AWS c5.metal), model configs for all 3 runs</li>
-        <li><code>C_execution_evidence/</code> — per-run metrics:
+        <li><code>SOTA_CLAIM.md</code>: formal claim (100% Execution Safety, metric definitions, comparison tables)</li>
+        <li><code>A_bench_definition/version_lock.json</code>: benchmark commit, task SHA256, paper baselines</li>
+        <li><code>B_environment/environment.json</code>: machine specs (AWS c5.metal), model configs for all 3 runs</li>
+        <li><code>C_execution_evidence/</code>: per-run metrics
           <ul>
-            <li><code>run1_gpt52_guard/metrics.json</code> — Run 1 detailed metrics</li>
-            <li><code>run2_gpt41_guard/metrics.json</code> — Run 2 detailed metrics</li>
-            <li><code>run3_gpt52_noguard/metrics.json</code> — Run 3 ablation metrics</li>
+            <li><code>run1_gpt52_guard/metrics.json</code>: Run 1 detailed metrics</li>
+            <li><code>run2_gpt41_guard/metrics.json</code>: Run 2 detailed metrics</li>
+            <li><code>run3_gpt52_noguard/metrics.json</code>: Run 3 ablation metrics</li>
           </ul>
         </li>
-        <li><code>D_reports/aggregate_report.md</code> — cross-run analysis and ablation study</li>
-        <li><code>E_repro/git_info.json</code> — TTGOS &amp; OS-Harm commit hashes</li>
-        <li><code>E_repro/raw_data_checksums.json</code> — SHA256 checksums for all raw data archives below</li>
+        <li><code>D_reports/aggregate_report.md</code>: cross-run analysis and ablation study</li>
+        <li><code>E_repro/git_info.json</code>: TTGOS &amp; OS-Harm commit hashes</li>
+        <li><code>E_repro/raw_data_checksums.json</code>: SHA256 checksums for all raw data archives below</li>
       </ul>
       
       <h3>Raw Data Archives</h3>
@@ -438,8 +438,8 @@
          ======================================== -->
     <section class="section" aria-labelledby="about">
       <h2 id="about">About</h2>
-      <p class="description"><a href="https://github.com/hironao-nakamura/two-topos-grounding-os" target="_blank" rel="noopener">TTGOS (Two-Topos Grounding OS)</a> is built on an original mathematical theory that models agent safety as two separate layers — what the agent observes, and how it reasons — connected by a formal structure called a <em>grounding morphism</em>. This defines what a safe action is at each step, and proves that safety composes: if each step preserves grounding, the whole sequence does too.</p>
-      <p class="description">The Guard is an operational implementation of this theorem. Because safety comes from structural invariants — not the model's own judgment — it works regardless of which model powers the agent.</p>
+      <p class="description"><a href="https://github.com/hironao-nakamura/two-topos-grounding-os" target="_blank" rel="noopener">TTGOS (Two-Topos Grounding OS)</a> is built on an original mathematical theory that models agent safety as two separate layers (what the agent observes, and how it reasons) connected by a formal structure called a <em>grounding morphism</em>. This defines what a safe action is at each step, and proves that safety composes: if each step preserves grounding, the whole sequence does too.</p>
+      <p class="description">The Guard is an operational implementation of this theorem. Because safety comes from structural invariants, not the model's own judgment, it works regardless of which model powers the agent.</p>
       <p class="description">TTGOS is a non-profit personal research project by <a href="https://www.melqi.org/people/hironao/" target="_blank" rel="noopener">Hironao Nakamura</a> (independent researcher).</p>
     </section>
   </main>

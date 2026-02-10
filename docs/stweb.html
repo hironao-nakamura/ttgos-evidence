@@ -21,6 +21,10 @@
   <meta name="twitter:image" content="https://hironao-nakamura.github.io/ttgos-evidence/og/og-image.png">
   
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .insight-grid { grid-template-columns: repeat(2, 1fr); }
+    .insight-grid .insight-item:first-child { grid-column: 1 / -1; }
+  </style>
 </head>
 <body>
   <main>
@@ -34,7 +38,10 @@
       <h1>TTGOS Guard achieves CuP-SOTA on ST-WebAgentBench (Core-84)</h1>
       
       <!-- Sub: AI safety benefit (one sentence) -->
-      <p class="subtitle">AI safety benefit: higher policy-compliant completion (CuP) with violations kept at zero — and auditable receipts for every success.</p>
+      <p class="subtitle">
+        46.4% CuP with zero violations, 2.4x the same-model baseline and nearly 2x the best known leaderboard result (AWM 23.8%).
+        <a href="#significance">Why this matters &rarr;</a>
+      </p>
       
       <!-- Bench Links (5 items: Official / GitHub / arXiv / OpenReview / IBM) -->
       <p class="bench-note">Benchmark: ST-WebAgentBench (IBM Research)</p>
@@ -88,7 +95,7 @@
         </div>
       </div>
       
-      <p class="awm-legend">Dotted line = Leaderboard reference (Core benchmark): AWM CuP 23.8%</p>
+      <p class="awm-legend">Dotted line = AWM 23.8%, the best published CuP on the <a href="https://docs.google.com/spreadsheets/d/1iJdIAq2QonAmQH-qYScIlcsLwXMuKHIIfbNrEP8AI6I" target="_blank" rel="noopener">official leaderboard</a></p>
       
       <!-- CuP definition (1 line) -->
       <p class="cup-definition">CuP = the fraction of tasks completed <em>under active policies</em> (completion + compliance).</p>
@@ -112,7 +119,7 @@
     <!-- Results (Core-84 ONLY) -->
     <section class="section" aria-labelledby="results">
       <h2 id="results">Results</h2>
-      <p class="description">ST-WebAgentBench measures completion under active policies (CuP). TTGOS improves CuP while maintaining zero violations, with auditable receipts.</p>
+      <p class="description">CuP (Completion under Policy) counts a task as successful only if it is completed <em>and</em> no safety policy is violated. The ST-WebAgentBench paper shows that existing agents lose roughly a third of their completions to policy violations, with an average CuP of ~15% across three SOTA agents. TTGOS Guard achieves 46.4%, nearly 2x the best published result (AWM 23.8%), through a same-model ablation that isolates the Guard's contribution: +27.4 points over baseline.</p>
       
       <div class="results-table">
         <div class="results-row">
@@ -128,8 +135,27 @@
           <span class="results-value">+27.4 pt (same model)</span>
         </div>
         <div class="results-row muted">
-          <span class="results-label">Leaderboard reference (Core benchmark)</span>
+          <span class="results-label">Leaderboard best (<a href="https://docs.google.com/spreadsheets/d/1iJdIAq2QonAmQH-qYScIlcsLwXMuKHIIfbNrEP8AI6I" target="_blank" rel="noopener">Core benchmark</a>)</span>
           <span class="results-value">AWM CuP 23.8%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Matters -->
+    <section class="section" aria-labelledby="significance">
+      <h2 id="significance">Why This Matters</h2>
+      <div class="insight-grid">
+        <div class="insight-item">
+          <h3>A safety layer that increases task completion</h3>
+          <p>Safety mechanisms are typically expected to reduce performance: the agent does less in order to stay safe. TTGOS Guard does the opposite. Under identical conditions (same model, same benchmark lock, same step budget), adding the Guard raised CuP from 19.0% to 46.4%. The agent completed 23 additional tasks it would otherwise have failed. The Guard's structured per-step evaluation (ACT, PROBE, SAFE_ABORT) helps the agent navigate policy-laden tasks more effectively, not just more safely.</p>
+        </div>
+        <div class="insight-item">
+          <h3>Nearly 2x the best published result</h3>
+          <p>The <a href="https://docs.google.com/spreadsheets/d/1iJdIAq2QonAmQH-qYScIlcsLwXMuKHIIfbNrEP8AI6I" target="_blank" rel="noopener">official leaderboard</a> lists AWM at 23.8% CuP on the Core benchmark (the best known result). TTGOS Guard achieves 46.4% on the same Core-84 task set. The other published agents score 11.3% (WebVoyager) and 11.4% (WorkArena).</p>
+        </div>
+        <div class="insight-item">
+          <h3>CuP is a hard metric by design</h3>
+          <p>CuP credits a task only when it is fully completed <em>and</em> every safety policy is satisfied. A single policy violation zeros the score for that task. The ST-WebAgentBench paper (IBM Research) reports that existing agents lose roughly a third of their completions to policy violations. The benchmark spans 6 safety dimensions including user consent, boundary enforcement, jailbreak resistance, and error handling.</p>
         </div>
       </div>
     </section>
@@ -137,7 +163,7 @@
     <!-- How Guard Works -->
     <section class="section" aria-labelledby="how-it-works">
       <h2 id="how-it-works">How TTGOS Guard Works</h2>
-      <p class="description">TTGOS Guard is an independent safety layer that wraps any AI agent. It does not modify the underlying model — it monitors, evaluates, and intervenes at each step.</p>
+      <p class="description">TTGOS Guard is an independent safety layer that wraps any AI agent. It does not modify the underlying model; it monitors, evaluates, and intervenes at each step.</p>
       
       <div class="flow-steps">
         <div class="flow-step">
@@ -178,11 +204,11 @@
       
       <h3>Contents</h3>
       <ul class="evidence-contents-list">
-        <li><code>version_lock.json</code> — benchmark commit / task sha / engine build</li>
+        <li><code>version_lock.json</code>: benchmark commit / task sha / engine build</li>
         <li><code>environment.json</code></li>
-        <li><code>summary.json</code> — 84 tasks</li>
-        <li><code>receipts_v0_1/</code> — one receipt per CuP success</li>
-        <li><code>validator_report.json</code> — PASS</li>
+        <li><code>summary.json</code>: 84 tasks</li>
+        <li><code>receipts_v0_1/</code>: one receipt per CuP success</li>
+        <li><code>validator_report.json</code>: PASS</li>
       </ul>
       
       <p class="evidence-note">Receipts are generated in the same run as the summary (no post-hoc replays).</p>
@@ -226,8 +252,8 @@
     <!-- About -->
     <section class="section" aria-labelledby="about">
       <h2 id="about">About</h2>
-      <p class="description"><a href="https://github.com/hironao-nakamura/two-topos-grounding-os" target="_blank" rel="noopener">TTGOS (Two-Topos Grounding OS)</a> is built on an original mathematical theory that models agent safety as two separate layers — what the agent observes, and how it reasons — connected by a formal structure called a <em>grounding morphism</em>. This defines what a safe action is at each step, and proves that safety composes: if each step preserves grounding, the whole sequence does too.</p>
-      <p class="description">The Guard is an operational implementation of this theorem. Because safety comes from structural invariants — not the model's own judgment — it works regardless of which model powers the agent.</p>
+      <p class="description"><a href="https://github.com/hironao-nakamura/two-topos-grounding-os" target="_blank" rel="noopener">TTGOS (Two-Topos Grounding OS)</a> is built on an original mathematical theory that models agent safety as two separate layers (what the agent observes, and how it reasons) connected by a formal structure called a <em>grounding morphism</em>. This defines what a safe action is at each step, and proves that safety composes: if each step preserves grounding, the whole sequence does too.</p>
+      <p class="description">The Guard is an operational implementation of this theorem. Because safety comes from structural invariants, not the model's own judgment, it works regardless of which model powers the agent.</p>
       <p class="description">TTGOS is a non-profit personal research project by <a href="https://www.melqi.org/people/hironao/" target="_blank" rel="noopener">Hironao Nakamura</a> (independent researcher).</p>
     </section>
   </main>
