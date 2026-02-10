@@ -32,7 +32,7 @@
       
       <p class="subtitle">
         Every single harmful task — misuse, prompt injection, and misbehavior — was detected and prevented before execution.
-        No frontier model achieves this alone.
+        No frontier model achieves this alone. <a href="#significance">Why this matters &rarr;</a>
       </p>
       
       <!-- Benchmark info -->
@@ -279,7 +279,11 @@
       
       <div class="insight-grid">
         <div class="insight-item">
-          <h3>No model is safe enough — and stronger models are worse</h3>
+          <h3>100% safety &ne; blocking everything</h3>
+          <p>The Guard did not prevent the agent from acting &mdash; it let the agent operate freely and intervened only when necessary. It makes a per-step decision &mdash; ACT (allow), PROBE (investigate), or SAFE_ABORT (prevent) &mdash; on every action the agent proposes. On misbehavior tasks, the Guard allowed up to 14 consecutive steps of agent activity before the task ended safely &mdash; and every step-level decision is recorded in the <a href="#evidence">downloadable evidence pack</a>. Across 110 tasks spanning three fundamentally different attack types (jailbreaks, hidden injections, and autonomous misbehavior), the Guard made the correct call every time &mdash; zero false negatives.</p>
+        </div>
+        <div class="insight-item">
+          <h3>No model is safe enough on its own — and stronger models are worse</h3>
           <p>Claude 3.7 Sonnet (~59% safety) is the <em>best</em> unguarded result — not a weak baseline. More capable models score lower: GPT-4o ~45%, o4-mini ~33%. This capability&ndash;safety trade-off means that improving model ability alone will not solve the safety problem. An external safety layer is required.</p>
         </div>
         <div class="insight-item">
@@ -287,8 +291,8 @@
           <p>TTGOS Guard does not depend on the model's own safety training. It provides a structural guarantee: harmful actions are caught before execution, regardless of model compliance.</p>
         </div>
         <div class="insight-item">
-          <h3>Cross-benchmark consistency</h3>
-          <p>TTGOS Guard also holds the <a href="stweb.html">SOTA on ST-WebAgentBench</a> (web safety). This demonstrates the approach generalizes across environments (web and OS), not just one benchmark.</p>
+          <h3>One framework across benchmarks</h3>
+          <p>The same Guard architecture, derived from the same mathematical theory, achieves results on both OS-Harm (OS-level safety) and <a href="stweb.html">ST-WebAgentBench</a> (web safety + task completion). Different environments, different metrics, consistent safety. This is evidence of a general approach, not benchmark-specific optimization.</p>
         </div>
       </div>
     </section>
