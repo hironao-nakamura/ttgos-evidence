@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no, address=no">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Request an API key — TTGOS Hosted Repro</title>
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <!-- Header -->
+    <header class="hero form-hero">
+      <p class="breadcrumb"><a href="index.html">← Back to TTGOS Evidence</a></p>
+      
+      <h1>Request an API key</h1>
+      
+      <!-- Short intro -->
+      <ul class="intro-list">
+        <li>Run verification jobs using <strong>your own OpenAI API key</strong> (we <strong>do not store</strong> it).</li>
+        <li>Receive an <strong>auditable evidence bundle</strong> (summary + receipts + validator PASS).</li>
+        <li>No endorsement required — <strong>critical reports are welcome</strong>.</li>
+      </ul>
+      
+      <!-- Micro FAQ -->
+      <div class="micro-faq">
+        <p><strong>What will I receive?</strong> An API key + instructions to run Core-84 jobs and download evidence bundles.</p>
+        <p><strong>Do you store my OpenAI key?</strong> No. You provide it per job; it is not stored.</p>
+      </div>
+    </header>
+
+    <!-- Form -->
+    <form id="api-key-form" class="form-container">
+      
+      <!-- Required Fields -->
+      <fieldset class="form-section">
+        <legend>Required information</legend>
+        
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email" class="required">Email</label>
+          <input type="email" id="email" name="email" placeholder="name@example.com" required>
+          <p class="help-text">We will send a verification link to this address, then deliver your TTGOS API key after verification.</p>
+        </div>
+        
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name" class="required">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+        
+        <!-- Organization -->
+        <div class="form-group">
+          <label for="organization" class="required">Organization / Affiliation</label>
+          <input type="text" id="organization" name="organization" placeholder="Independent / Company / University / Lab / Project name" required>
+          <p class="help-text">If you are applying as an individual, write "Independent".</p>
+        </div>
+        
+        <!-- Affiliation type -->
+        <div class="form-group">
+          <label for="affiliation-type" class="required">Affiliation type</label>
+          <select id="affiliation-type" name="affiliation_type" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="independent">Independent</option>
+            <option value="company">Company</option>
+            <option value="university">University / Research Lab</option>
+            <option value="oss">OSS / Community</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <!-- Purpose -->
+        <div class="form-group">
+          <label for="purpose" class="required">Purpose</label>
+          <select id="purpose" name="purpose" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="verification">Independent verification</option>
+            <option value="research">Research / benchmarking</option>
+            <option value="governance">Governance / audit perspective</option>
+            <option value="adoption">Potential adoption / partnership</option>
+            <option value="press">Press / media</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <!-- Publication preference -->
+        <div class="form-group">
+          <label for="publication-preference" class="required">Publication preference (optional verifier report)</label>
+          <select id="publication-preference" name="publication_preference" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="public">You may publish with my name/org</option>
+            <option value="anonymous">You may publish anonymously / pseudonymously</option>
+            <option value="internal">Do not publish (internal only)</option>
+          </select>
+          <p class="help-text">A verifier report is optional and observation-only. Publishing is never required.</p>
+        </div>
+      </fieldset>
+      
+      <!-- Optional Fields -->
+      <fieldset class="form-section">
+        <legend>Optional information</legend>
+        
+        <!-- Conflict of interest -->
+        <div class="form-group">
+          <label for="coi">Conflict of interest (COI)</label>
+          <select id="coi" name="coi">
+            <option value="" selected>Select one (optional)</option>
+            <option value="none">None</option>
+            <option value="competitor">Competitor</option>
+            <option value="collaboration">Collaboration / funding relationship</option>
+            <option value="prefer-not">Prefer not to say</option>
+          </select>
+          <p class="help-text">COI does not disqualify you. This is for transparency only.</p>
+        </div>
+        
+        <!-- Note -->
+        <div class="form-group">
+          <label for="note">Note (optional)</label>
+          <textarea id="note" name="note" placeholder="Anything helpful (e.g., what you want to verify)" maxlength="400" rows="3"></textarea>
+          <p class="help-text char-count"><span id="note-count">0</span> / 400 characters</p>
+        </div>
+      </fieldset>
+      
+      <!-- Agreements -->
+      <fieldset class="form-section">
+        <legend>Agreements</legend>
+        
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" name="agree_terms" required>
+            <span>I agree to the Hosted Repro terms (<a href="https://github.com/hironao-nakamura/ttgos-evidence/blob/main/contracts/API_Access_Policy_v0.1.md" target="_blank" rel="noopener">API Access Policy v0.1</a>).</span>
+          </label>
+        </div>
+        
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" name="agree_openai_key" required>
+            <span>I understand I must use my own OpenAI API key per job, and Hosted Repro does not store it.</span>
+          </label>
+        </div>
+      </fieldset>
+      
+      <!-- Submit -->
+      <div class="form-actions">
+        <button type="submit" class="cta primary">Request API key</button>
+      </div>
+    </form>
+
+    <!-- Success Message (hidden by default) -->
+    <div id="success-message" class="success-container" style="display: none;">
+      <div class="success-icon">✓</div>
+      <h2>Check your email to verify</h2>
+      <p class="success-body">We've sent a verification link to <strong id="submitted-email"></strong>.</p>
+      <p class="success-body">After you verify your email, your <strong>TTGOS Hosted Repro API key</strong> will be delivered automatically.</p>
+      
+      <div class="success-note">
+        <p><strong>If you don't see the email:</strong></p>
+        <ul>
+          <li>Please check your spam folder.</li>
+          <li>If it still doesn't arrive, try again or contact: <a href="mailto:hiro@melqi.org">hiro@melqi.org</a></li>
+        </ul>
+      </div>
+      
+      <div class="success-links">
+        <p><strong>What you'll be able to run:</strong> Core-84 Guard / Baseline</p>
+        <p><strong>Evidence format:</strong> receipts + validator PASS</p>
+      </div>
+      
+      <a href="index.html" class="cta secondary">Back to TTGOS Evidence</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="disclaimer">This is benchmark-scoped conformance evidence, not a general safety certification for deployment.</p>
+    <p>© 2026</p>
+  </footer>
+
+  <script>
+    // Character counter for note field
+    const noteField = document.getElementById('note');
+    const noteCount = document.getElementById('note-count');
+    
+    noteField.addEventListener('input', function() {
+      noteCount.textContent = this.value.length;
+    });
+
+    // Form submission
+    const form = document.getElementById('api-key-form');
+    const successMessage = document.getElementById('success-message');
+    const submittedEmail = document.getElementById('submitted-email');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const email = formData.get('email');
+
+      // Build request payload
+      const payload = {
+        email: formData.get('email'),
+        name: formData.get('name'),
+        organization: formData.get('organization'),
+        affiliation_type: formData.get('affiliation_type'),
+        purpose: formData.get('purpose'),
+        publication_preference: formData.get('publication_preference'),
+        coi: formData.get('coi') || '',
+        note: formData.get('note') || ''
+      };
+
+      // Disable submit button
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      try {
+        const response = await fetch('https://jxvg5033zf.execute-api.us-east-2.amazonaws.com/v1/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.detail || data.error || 'Request failed');
+        }
+
+        // Show success message
+        form.style.display = 'none';
+        submittedEmail.textContent = email;
+        successMessage.style.display = 'block';
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (error) {
+        alert('Error: ' + error.message);
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  </script>
+</body>
+</html>

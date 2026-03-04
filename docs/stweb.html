@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no, address=no">
+  <meta name="robots" content="noindex, nofollow">
+  <title>TTGOS CuP-SOTA on ST-WebAgentBench (Core-84)</title>
+  
+  <!-- OGP for SNS -->
+  <meta property="og:title" content="TTGOS Guard achieves CuP-SOTA on Core-84">
+  <meta property="og:description" content="46.4% (39/84) vs 19.0% baseline, violations=0, validator PASS">
+  <meta property="og:url" content="https://hironao-nakamura.github.io/ttgos-evidence/stweb.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://hironao-nakamura.github.io/ttgos-evidence/og/og-image.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TTGOS Guard achieves CuP-SOTA on Core-84">
+  <meta name="twitter:description" content="46.4% (39/84) vs 19.0% baseline, violations=0, validator PASS">
+  <meta name="twitter:image" content="https://hironao-nakamura.github.io/ttgos-evidence/og/og-image.png">
+  
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .insight-grid { grid-template-columns: repeat(2, 1fr); }
+    .insight-grid .insight-item:first-child { grid-column: 1 / -1; }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- ========================================
+         FIRST VIEW: 30-second understanding zone
+         ======================================== -->
+    <header class="hero">
+      <p class="breadcrumb"><a href="index.html">TTGOS Evidence</a> / ST-WebAgentBench</p>
+      
+      <!-- H1 -->
+      <h1>TTGOS Guard achieves CuP-SOTA on ST-WebAgentBench (Core-84)</h1>
+      
+      <!-- Sub: AI safety benefit (one sentence) -->
+      <p class="subtitle">
+        46.4% CuP with zero violations, 2.4x the same-model baseline and nearly 2x the best known leaderboard result (AWM 23.8%).
+        <a href="#significance">Why this matters &rarr;</a>
+      </p>
+      
+      <!-- Bench Links (5 items: Official / GitHub / arXiv / OpenReview / IBM) -->
+      <p class="bench-note">Benchmark: ST-WebAgentBench (IBM Research)</p>
+      <div class="bench-links">
+        <a href="https://sites.google.com/view/st-webagentbench" target="_blank" rel="noopener">Official site</a>
+        <a href="https://github.com/segev-shlomov/ST-WebAgentBench" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://arxiv.org/abs/2410.06703" target="_blank" rel="noopener">arXiv</a>
+        <a href="https://iclr.cc/virtual/2026/poster/10009904" target="_blank" rel="noopener">ICLR 2026</a>
+        <a href="https://research.ibm.com/publications/st-webagentbench-a-benchmark-for-evaluating-safety-and-trustworthiness-in-web-agents" target="_blank" rel="noopener">IBM Research</a>
+      </div>
+      
+      <!-- KPI Cards + Trust Badges (SAME LEVEL) -->
+      <div class="kpi-trust-grid">
+        <!-- KPI Cards -->
+        <div class="metric-card">
+          <span class="metric-label">CuP (Guard)</span>
+          <span class="metric-value">46.4%</span>
+          <div class="progress-bar">
+            <div class="progress-fill guard" style="width: 46.4%"></div>
+            <div class="progress-marker awm" style="left: 23.8%" title="Leaderboard reference (Core benchmark): AWM CuP 23.8%"></div>
+          </div>
+          <span class="metric-detail">39 / 84</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">CuP (Baseline)</span>
+          <span class="metric-value">19.0%</span>
+          <div class="progress-bar">
+            <div class="progress-fill baseline" style="width: 19.0%"></div>
+            <div class="progress-marker awm" style="left: 23.8%" title="Leaderboard reference (Core benchmark): AWM CuP 23.8%"></div>
+          </div>
+          <span class="metric-detail">16 / 84</span>
+        </div>
+        <div class="metric-card highlight">
+          <span class="metric-label">Guard effect</span>
+          <span class="metric-value">+27.4pt</span>
+          <span class="metric-detail">same-model ablation</span>
+        </div>
+        
+        <!-- Trust Badges (SAME LEVEL as KPI) -->
+        <div class="trust-card primary">
+          <span class="trust-label">Violations</span>
+          <span class="trust-value pass">0</span>
+        </div>
+        <div class="trust-card">
+          <span class="trust-label">Validator</span>
+          <span class="trust-value pass">PASS</span>
+        </div>
+        <div class="trust-card">
+          <span class="trust-label">Receipts</span>
+          <span class="trust-value pass">39 / 39</span>
+        </div>
+      </div>
+      
+      <p class="awm-legend">Dotted line = AWM 23.8%, the best published CuP on the <a href="https://docs.google.com/spreadsheets/d/1iJdIAq2QonAmQH-qYScIlcsLwXMuKHIIfbNrEP8AI6I" target="_blank" rel="noopener">official leaderboard</a></p>
+      
+      <!-- CuP definition (1 line) -->
+      <p class="cup-definition">CuP = the fraction of tasks completed <em>under active policies</em> (completion + compliance).</p>
+      
+      <!-- Version Lock -->
+      <p class="version-lock">
+        Benchmark: <code>c7235c17…</code> · Task sha256: <code>65634057…</code>
+      </p>
+      
+      <!-- CTA -->
+      <div class="cta-group">
+        <a href="mailto:hironao12516@toki.waseda.jp?subject=TTGOS%20Hosted%20Repro%20API%20Key%20Request&amp;body=Name%3A%20%0AOrganization%3A%20%0APurpose%3A%20" class="cta primary">Request API key</a>
+        <a href="#evidence" class="cta secondary">Download EvidencePack</a>
+      </div>
+    </header>
+
+    <!-- ========================================
+         SCROLL 1: Verification / Evidence / Docs
+         ======================================== -->
+    
+    <!-- Results (Core-84 ONLY) -->
+    <section class="section" aria-labelledby="results">
+      <h2 id="results">Results</h2>
+      <p class="description">CuP (Completion under Policy) counts a task as successful only if it is completed <em>and</em> no safety policy is violated. The ST-WebAgentBench paper shows that existing agents lose roughly a third of their completions to policy violations, with an average CuP of ~15% across three SOTA agents. TTGOS Guard achieves 46.4%, nearly 2x the best published result (AWM 23.8%), through a same-model ablation that isolates the Guard's contribution: +27.4 points over baseline.</p>
+      
+      <div class="results-table">
+        <div class="results-row">
+          <span class="results-label">Guard</span>
+          <span class="results-value">39 / 84 (46.4%)</span>
+        </div>
+        <div class="results-row">
+          <span class="results-label">Baseline</span>
+          <span class="results-value">16 / 84 (19.0%)</span>
+        </div>
+        <div class="results-row">
+          <span class="results-label">Guard effect</span>
+          <span class="results-value">+27.4 pt (same model)</span>
+        </div>
+        <div class="results-row muted">
+          <span class="results-label">Leaderboard best (<a href="https://docs.google.com/spreadsheets/d/1iJdIAq2QonAmQH-qYScIlcsLwXMuKHIIfbNrEP8AI6I" target="_blank" rel="noopener">Core benchmark</a>)</span>
+          <span class="results-value">AWM CuP 23.8%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Matters -->
+    <section class="section" aria-labelledby="significance">
+      <h2 id="significance">Why This Matters</h2>
+      <div class="insight-grid">
+        <div class="insight-item">
+          <h3>A safety layer that increases task completion</h3>
+          <p>Safety mechanisms are typically expected to reduce performance: the agent does less in order to stay safe. TTGOS Guard does the opposite. Under identical conditions (same model, same benchmark lock, same step budget), adding the Guard raised CuP from 19.0% to 46.4%. The agent completed 23 additional tasks it would otherwise have failed. The Guard's structured per-step evaluation (ACT, PROBE, SAFE_ABORT) helps the agent navigate policy-laden tasks more effectively, not just more safely.</p>
+        </div>
+        <div class="insight-item">
+          <h3>Nearly 2x the best published result</h3>
+          <p>The <a href="https://docs.google.com/spreadsheets/d/1iJdIAq2QonAmQH-qYScIlcsLwXMuKHIIfbNrEP8AI6I" target="_blank" rel="noopener">official leaderboard</a> lists AWM at 23.8% CuP on the Core benchmark (the best known result). TTGOS Guard achieves 46.4% on the same Core-84 task set. The other published agents score 11.3% (WebVoyager) and 11.4% (WorkArena).</p>
+        </div>
+        <div class="insight-item">
+          <h3>CuP is a hard metric by design</h3>
+          <p>CuP credits a task only when it is fully completed <em>and</em> every safety policy is satisfied. A single policy violation zeros the score for that task. The ST-WebAgentBench paper (IBM Research) reports that existing agents lose roughly a third of their completions to policy violations. The benchmark spans 6 safety dimensions including user consent, boundary enforcement, jailbreak resistance, and error handling.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How Guard Works -->
+    <section class="section" aria-labelledby="how-it-works">
+      <h2 id="how-it-works">How TTGOS Guard Works</h2>
+      <p class="description">TTGOS Guard is an independent safety layer that wraps any AI agent. It does not modify the underlying model; it monitors, evaluates, and intervenes at each step.</p>
+      
+      <div class="flow-steps">
+        <div class="flow-step">
+          <span class="flow-number">1</span>
+          <span class="flow-title">Agent proposes action</span>
+          <span class="flow-desc">The underlying model decides what to do next</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <span class="flow-number">2</span>
+          <span class="flow-title">Guard evaluates risk</span>
+          <span class="flow-desc">Policy-based risk assessment at every step</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <span class="flow-number">3</span>
+          <span class="flow-title">Decision</span>
+          <span class="flow-desc">ACT (safe), PROBE (investigate), or SAFE_ABORT (prevent harm)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evidence -->
+    <section class="section" aria-labelledby="evidence">
+      <h2 id="evidence">Evidence (auditable)</h2>
+      
+      <div class="evidence-primary">
+        <a href="https://ttgos-evidence.s3.us-east-2.amazonaws.com/artifacts/stweb-core84/v1/stweb_core84_evidencepack_full_v1.tar.gz" class="evidence-button primary" target="_blank" rel="noopener">
+          <span class="evidence-name">Download EvidencePack (Full)</span>
+          <span class="evidence-meta">stweb_core84_evidencepack_full_v1.tar.gz · 73 KB</span>
+          <span class="evidence-hash">sha256: <code>f8db5338…</code></span>
+        </a>
+      </div>
+      
+      <p class="evidence-alt">
+        <a href="https://ttgos-evidence.s3.us-east-2.amazonaws.com/artifacts/stweb-core84/v1/stweb_core84_evidencepack_light_v1.zip" target="_blank" rel="noopener">Download Light Pack</a> (summary only, 3.1 KB)
+      </p>
+      
+      <h3>Contents</h3>
+      <ul class="evidence-contents-list">
+        <li><code>version_lock.json</code>: benchmark commit / task sha / engine build</li>
+        <li><code>environment.json</code></li>
+        <li><code>summary.json</code>: 84 tasks</li>
+        <li><code>receipts_v0_1/</code>: one receipt per CuP success</li>
+        <li><code>validator_report.json</code>: PASS</li>
+      </ul>
+      
+      <p class="evidence-note">Receipts are generated in the same run as the summary (no post-hoc replays).</p>
+      
+      <p class="evidence-supplementary">The full EvidencePack includes additional supplementary runs (extended suite) as supporting material, but the public claim on this page is Core-84 only.</p>
+    </section>
+
+    <!-- Reproduce -->
+    <section class="section" aria-labelledby="reproduce">
+      <h2 id="reproduce">Reproduce (Hosted Repro)</h2>
+      
+      <ol class="steps">
+        <li>Request an API key</li>
+        <li>Run a job (Core-84: guard / baseline)</li>
+        <li>Download an evidence bundle (includes an auto-generated verification report)</li>
+      </ol>
+      
+      <p class="optional-note">Optional: submit your observation-only report to be listed in the registry.</p>
+      
+      <div class="cta-group">
+        <a href="mailto:hironao12516@toki.waseda.jp?subject=TTGOS%20Hosted%20Repro%20API%20Key%20Request&amp;body=Name%3A%20%0AOrganization%3A%20%0APurpose%3A%20" class="cta primary">Request API key</a>
+        <a href="https://github.com/hironao-nakamura/ttgos-evidence/blob/main/docs/api-guide.md" class="cta secondary" target="_blank" rel="noopener">API documentation</a>
+      </div>
+    </section>
+
+    <!-- Public Verification Contract -->
+    <section class="section" aria-labelledby="docs">
+      <h2 id="docs">Public Verification Contract</h2>
+      <p class="description">Minimal public specs to verify evidence bundles without disclosing proprietary implementation.</p>
+      
+      <ul class="docs-list">
+        <li><a href="https://github.com/hironao-nakamura/ttgos-evidence/blob/main/contracts/Conformance_Spec_v0.1.md" target="_blank" rel="noopener">Conformance Spec v0.1</a></li>
+        <li><a href="https://github.com/hironao-nakamura/ttgos-evidence/blob/main/contracts/Validator_Rules_v0.1.md" target="_blank" rel="noopener">Validator Rules v0.1</a></li>
+        <li><a href="https://github.com/hironao-nakamura/ttgos-evidence/blob/main/contracts/Receipt_Schema_v0.1.json" target="_blank" rel="noopener">Receipt Schema v0.1</a></li>
+        <li><a href="https://github.com/hironao-nakamura/ttgos-evidence/blob/main/contracts/Auditor_Report_Format_v0.1.md" target="_blank" rel="noopener">Auditor Report Format v0.1</a></li>
+        <li><a href="https://github.com/hironao-nakamura/ttgos-evidence/blob/main/contracts/API_Access_Policy_v0.1.md" target="_blank" rel="noopener">API Access Policy v0.1</a></li>
+        <li><a href="https://github.com/hironao-nakamura/ttgos-evidence/blob/main/contracts/Verification_Template_v0.1.md" target="_blank" rel="noopener">Verification Template v0.1</a></li>
+      </ul>
+    </section>
+
+    <!-- About -->
+    <section class="section" aria-labelledby="about">
+      <h2 id="about">About</h2>
+      <p class="description"><a href="https://github.com/hironao-nakamura/two-topos-grounding-os" target="_blank" rel="noopener">TTGOS (Two-Topos Grounding OS)</a> is built on an original mathematical theory that models agent safety as two separate layers (what the agent observes, and how it reasons) connected by a formal structure called a <em>grounding morphism</em>. This defines what a safe action is at each step, and proves that safety composes: if each step preserves grounding, the whole sequence does too.</p>
+      <p class="description">The Guard is an operational implementation of this theorem. Because safety comes from structural invariants, not the model's own judgment, it works regardless of which model powers the agent.</p>
+      <p class="description">TTGOS is a non-profit personal research project by <a href="https://hironao-nakamura.github.io/" target="_blank" rel="noopener">Hironao Nakamura</a> (independent researcher).</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="disclaimer">This is benchmark-scoped conformance evidence, not a general safety certification for deployment.</p>
+    <p>&copy; 2026 &middot; <a href="index.html">TTGOS Evidence</a></p>
+  </footer>
+</body>
+</html>

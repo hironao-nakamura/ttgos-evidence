@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no, address=no">
+  <meta name="robots" content="noindex, nofollow">
+  <title>TTGOS Guard: Cross-Benchmark Safety SOTA</title>
+  
+  <!-- OGP for SNS -->
+  <meta property="og:title" content="TTGOS Guard: Cross-Benchmark Safety SOTA">
+  <meta property="og:description" content="100% safety on OS-Harm + CuP-SOTA on ST-WebAgentBench + TheAgentCompany. One framework, model-agnostic, multiple benchmarks.">
+  <meta property="og:url" content="https://hironao-nakamura.github.io/ttgos-evidence/">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TTGOS Guard: Cross-Benchmark Safety SOTA">
+  <meta name="twitter:description" content="100% safety on OS-Harm + CuP-SOTA on ST-WebAgentBench + TheAgentCompany. One framework, model-agnostic, multiple benchmarks.">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <!-- ========================================
+         HERO: Hub landing
+         ======================================== -->
+    <header class="hero">
+      <p class="breadcrumb"><a href="https://github.com/hironao-nakamura/ttgos-evidence">ttgos-evidence</a></p>
+      
+      <h1>TTGOS Guard: Cross-Benchmark Safety SOTA</h1>
+      
+      <p class="subtitle">Two-Topos Grounding OS: a model-agnostic safety layer for autonomous AI agents. Proven across multiple benchmarks.</p>
+    </header>
+
+    <!-- ========================================
+         BENCHMARK CARDS
+         ======================================== -->
+    <section class="section" aria-labelledby="benchmarks">
+      <h2 id="benchmarks">Benchmark Results</h2>
+      
+      <div class="hub-cards">
+        <!-- Card 1: OS-Harm -->
+        <a href="osharm.html" class="hub-card">
+          <div class="hub-card-header">
+            <span class="hub-card-badge">NeurIPS 2025 Spotlight</span>
+            <span class="hub-card-bench">OS-Harm</span>
+          </div>
+          <div class="hub-card-metric">
+            <span class="hub-card-value">100%</span>
+            <span class="hub-card-label">Execution Safety</span>
+          </div>
+          <div class="hub-card-bars">
+            <div class="hub-bar-row">
+              <span class="hub-bar-label">Guard</span>
+              <div class="progress-bar"><div class="progress-fill guard" style="width: 100%"></div></div>
+            </div>
+            <div class="hub-bar-row">
+              <span class="hub-bar-label">Best baseline</span>
+              <div class="progress-bar"><div class="progress-fill baseline" style="width: 59%"></div></div>
+              <span class="hub-bar-value">~59%</span>
+            </div>
+          </div>
+          <div class="hub-card-detail">
+            <p>Guard blocked 100% of harmful tasks; baseline executed ~41%</p>
+          </div>
+          <span class="hub-card-cta">View results &rarr;</span>
+        </a>
+        
+        <!-- Card 2: ST-WebAgentBench -->
+        <a href="stweb.html" class="hub-card">
+          <div class="hub-card-header">
+            <span class="hub-card-badge">IBM Research</span>
+            <span class="hub-card-bench">ST-WebAgentBench</span>
+          </div>
+          <div class="hub-card-metric">
+            <span class="hub-card-value">46.4%</span>
+            <span class="hub-card-label">CuP (SOTA)</span>
+          </div>
+          <div class="hub-card-bars">
+            <div class="hub-bar-row">
+              <span class="hub-bar-label">Guard</span>
+              <div class="progress-bar"><div class="progress-fill guard" style="width: 46.4%"></div></div>
+            </div>
+            <div class="hub-bar-row">
+              <span class="hub-bar-label">Baseline</span>
+              <div class="progress-bar"><div class="progress-fill baseline" style="width: 19%"></div></div>
+              <span class="hub-bar-value">19.0%</span>
+            </div>
+          </div>
+          <div class="hub-card-detail">
+            <p>Zero safety violations with 2.4x the task completion of baseline</p>
+          </div>
+          <span class="hub-card-cta">View results &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================
+         TAGLINE
+         ======================================== -->
+    <section class="section" aria-labelledby="framework">
+      <h2 id="framework">One Framework</h2>
+      <p class="description">One framework. Multiple benchmarks. Consistent safety guarantees.</p>
+      <p class="description">TTGOS Guard is an independent safety layer that wraps any AI agent. It does not modify the underlying model; it monitors, evaluates, and intervenes at each step.</p>
+      
+      <div class="flow-steps">
+        <div class="flow-step">
+          <span class="flow-number">1</span>
+          <span class="flow-title">Agent proposes action</span>
+          <span class="flow-desc">The underlying model decides what to do next</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <span class="flow-number">2</span>
+          <span class="flow-title">Guard evaluates risk</span>
+          <span class="flow-desc">Policy-based risk assessment at every step</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <span class="flow-number">3</span>
+          <span class="flow-title">Decision</span>
+          <span class="flow-desc">ACT (safe), PROBE (investigate), or SAFE_ABORT (prevent harm)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         ABOUT
+         ======================================== -->
+    <section class="section" aria-labelledby="about">
+      <h2 id="about">About</h2>
+      <p class="description"><a href="https://github.com/hironao-nakamura/two-topos-grounding-os" target="_blank" rel="noopener">TTGOS (Two-Topos Grounding OS)</a> is built on an original mathematical theory that models agent safety as two separate layers (what the agent observes, and how it reasons) connected by a formal structure called a <em>grounding morphism</em>. This defines what a safe action is at each step, and proves that safety composes: if each step preserves grounding, the whole sequence does too.</p>
+      <p class="description">The Guard is an operational implementation of this theorem. Because safety comes from structural invariants, not the model's own judgment, it works regardless of which model powers the agent.</p>
+      <p class="description">TTGOS is a non-profit personal research project by <a href="https://hironao-nakamura.github.io/" target="_blank" rel="noopener">Hironao Nakamura</a> (independent researcher).</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="disclaimer">This is benchmark-scoped conformance evidence, not a general safety certification for deployment.</p>
+    <p>&copy; 2026</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://melqi.org/schemas/receipt_v0.1.json",
+  "title": "MELQI Verified Receipt Schema v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "task_id",
+    "timestamp_utc",
+    "benchmark",
+    "engine",
+    "run_config",
+    "end_state"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "0.1" },
+    "receipt_id": { "type": "string" },
+    "task_id": { "type": "integer", "minimum": 0 },
+    "timestamp_utc": { "type": "string", "format": "date-time" },
+
+    "benchmark": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "task_set", "benchmark_commit", "task_file_sha256"],
+      "properties": {
+        "name": { "type": "string", "enum": ["st-webagentbench"] },
+        "task_set": { "type": "string", "enum": ["core84"] },
+        "benchmark_commit": { "type": "string" },
+        "task_file_sha256": { "type": "string" }
+      }
+    },
+
+    "engine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engine_name", "engine_build_id"],
+      "properties": {
+        "engine_name": { "type": "string" },
+        "engine_build_id": { "type": "string" }
+      }
+    },
+
+    "run_config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model", "timeout_seconds_per_task", "max_steps_per_task"],
+      "properties": {
+        "model": { "type": "string" },
+        "timeout_seconds_per_task": { "type": "integer", "minimum": 1 },
+        "max_steps_per_task": { "type": "integer", "minimum": 1 },
+        "seed_policy": { "type": "string" },
+        "headless": { "type": "boolean" }
+      }
+    },
+
+    "end_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["final_url", "url_check", "dom_checks"],
+      "properties": {
+        "final_url": { "type": "string" },
+        "url_check": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["check_type", "passed"],
+          "properties": {
+            "check_type": { "type": "string", "enum": ["exact_match", "pattern_match"] },
+            "expected": { "type": "string" },
+            "observed": { "type": "string" },
+            "passed": { "type": "boolean" }
+          }
+        },
+        "dom_checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["selector", "check_type", "passed"],
+            "properties": {
+              "selector": { "type": "string" },
+              "check_type": { "type": "string", "enum": ["exists", "exact_match", "must_include", "regex_match"] },
+              "expected": { "type": ["string", "boolean", "null"] },
+              "observed": { "type": ["string", "boolean", "null"] },
+              "passed": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+
+    "policy_compliance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["violations_count"],
+      "properties": {
+        "violations_count": { "type": "integer", "minimum": 0 },
+        "risk_ratio": { "type": ["number", "null"], "minimum": 0 },
+        "risk_by_dimension": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 0 }
+        }
+      }
+    },
+
+    "execution_trace_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "run_dir_id": { "type": "string" },
+        "log_digest_sha256": { "type": "string" }
+      }
+    },
+
+    "attachments": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "screenshot_path": { "type": "string" },
+        "html_snapshot_path": { "type": "string" }
+      }
+    },
+
+    "notes": { "type": "string" }
+  }
+}

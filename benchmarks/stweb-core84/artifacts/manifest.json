@@ -1,0 +1,51 @@
+{
+  "benchmark": "st-webagentbench",
+  "task_set": "core84",
+  "model": "gpt-5.2-2025-12-11",
+  "primary": [
+    {
+      "name": "evidencepack_full",
+      "url": "https://ttgos-evidence.s3.us-east-2.amazonaws.com/artifacts/stweb-core84/v1/stweb_core84_evidencepack_full_v1.tar.gz",
+      "sha256": "f8db5338eae4f5ea23968a00513bdf0a1910fd65081d90aa16559889ff33beb4",
+      "size_bytes": 72254,
+      "notes": "Full pack: Core-84 (Guard + Baseline) + supplementary Full235 + contracts + api + registry"
+    },
+    {
+      "name": "evidencepack_light",
+      "url": "https://ttgos-evidence.s3.us-east-2.amazonaws.com/artifacts/stweb-core84/v1/stweb_core84_evidencepack_light_v1.zip",
+      "sha256": "0fe3dba3fcbe1f1c2f7e1d310c0935ef727bc2e570967405865b333ebe9502c1",
+      "size_bytes": 3118,
+      "notes": "Light pack: SOTA_CLAIM + results summary only"
+    }
+  ],
+  "secondary": [
+    {
+      "name": "core84_guard_evidence_bundle",
+      "url": "https://ttgos-evidence.s3.us-east-2.amazonaws.com/artifacts/stweb-core84/v1/core84_guard.tar.gz",
+      "sha256": "3e3208efe6fb2613542399be9015da8ff4e0a74e333ae575337358dae5874883",
+      "size_bytes": 9020,
+      "notes": "Individual bundle: Core-84 Guard. Validator PASS."
+    },
+    {
+      "name": "core84_baseline_evidence_bundle",
+      "url": "https://ttgos-evidence.s3.us-east-2.amazonaws.com/artifacts/stweb-core84/v1/core84_baseline.tar.gz",
+      "sha256": "fcc356a175814333bd12980066ddb4cec9db0857c7fd97c44e9ab2446b284200",
+      "size_bytes": 5922,
+      "notes": "Individual bundle: Core-84 Baseline. Validator PASS."
+    },
+    {
+      "name": "supplementary_full235_guard",
+      "url": "https://ttgos-evidence.s3.us-east-2.amazonaws.com/artifacts/stweb-core84/v1/full235_guard.tar.gz",
+      "sha256": "c1f4def7fdbe129d49ada3681bca7a81cf67a70d7e6488fcb007b574bc227af1",
+      "size_bytes": 23768,
+      "notes": "Supplementary run; not shown on the one-page."
+    },
+    {
+      "name": "supplementary_full235_baseline",
+      "url": "https://ttgos-evidence.s3.us-east-2.amazonaws.com/artifacts/stweb-core84/v1/full235_baseline.tar.gz",
+      "sha256": "3736b543fa43db41e7f52ff97c1e8c2cbab2226f1e6eb106c78b19499b0f095a",
+      "size_bytes": 22883,
+      "notes": "Supplementary run; not shown on the one-page."
+    }
+  ]
+}
